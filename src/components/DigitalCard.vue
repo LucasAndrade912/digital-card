@@ -57,10 +57,10 @@ defineProps({
   position: relative;
   display: grid;
   align-items: center;
-  grid-template-columns: 45% 55%;
-  padding: 40px;
-  border-radius: 14px;
-  width: 732px;
+  grid-template-columns: 40% 60%;
+  padding: 2.5rem;
+  border-radius: 0.875rem;
+  min-width: 46.75rem;
   background-color: #e6e5e5;
   color: #000;
 }
@@ -68,8 +68,9 @@ defineProps({
 #digital-card img {
   position: relative;
   z-index: 10;
-  width: 224px;
-  height: 224px;
+  object-fit: cover;
+  width: 14rem;
+  height: 14rem;
   border-radius: 50%;
 }
 
@@ -82,8 +83,8 @@ defineProps({
   top: 0;
   left: 0;
   background-color: #883bf9;
-  border-top-left-radius: 14px;
-  border-bottom-left-radius: 14px;
+  border-top-left-radius: 0.875rem;
+  border-bottom-left-radius: 0.875rem;
 }
 
 #digital-card #info {
@@ -115,13 +116,14 @@ h3 {
 #digital-card #info ul {
   list-style: none;
   font-weight: 500;
-  font-family: 'Poppins', sans-serif;
   padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 #digital-card #info ul li {
   position: relative;
-  margin-bottom: 4px;
   display: flex;
 }
 
@@ -137,7 +139,7 @@ h3 {
   bottom: 0;
   left: 0;
   content: '';
-  width: 40px;
+  width: 2.5rem;
   height: 3px;
 }
 </style>
