@@ -5,6 +5,7 @@ import CardForm from './components/CardForm.vue'
 import DigitalCard from './components/DigitalCard.vue'
 
 const image = ref(null)
+const imageName = ref('')
 
 const cardData = reactive({
   title: '',
@@ -22,7 +23,13 @@ watch(image, () => {
 <template>
   <main>
     <CardForm
-      @change:image="(file) => (image = file)"
+      :imageName="imageName"
+      @change:image="
+        (file) => {
+          image = file
+          imageName = file.name
+        }
+      "
       v-model:title="cardData.title"
       v-model:subtitle="cardData.subtitle"
       v-model:phone="cardData.phone"

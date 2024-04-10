@@ -1,5 +1,6 @@
 <script setup>
 defineProps({
+  imageName: String,
   title: {
     required: true,
     type: String
@@ -36,7 +37,21 @@ defineEmits([
   <form>
     <div class="input-field">
       <label for="logo">Imagem:</label>
-      <input type="file" id="logo" @change="$emit('change:image', $event.target.files[0])" />
+      <label id="custom-input-file">
+        <span v-if="imageName">{{ imageName }}</span>
+
+        <div v-else>
+          <img src="../assets/upload.svg" alt="Upload file icon" />
+          <span>Selecione uma imagem</span>
+        </div>
+
+        <input
+          type="file"
+          id="logo"
+          accept=".jpg, .jpeg, .png"
+          @change="$emit('change:image', $event.target.files[0])"
+        />
+      </label>
     </div>
 
     <div class="input-field">
@@ -94,6 +109,75 @@ defineEmits([
       />
     </div>
 
-    <input type="submit" value="Export to PNG" />
+    <button type="submit">Export to Image</button>
   </form>
 </template>
+
+<style scoped>
+form {
+  width: 100%;
+  max-width: 39rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+form .input-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+form .input-field label {
+  font-size: 1rem;
+}
+
+form .input-field input:not(input[type='file']),
+#custom-input-file {
+  background: none;
+  border-radius: 0.25rem;
+  border: 1px solid rgb(78, 78, 78);
+  padding: 8px;
+  color: #fff;
+  font-size: 0.875rem;
+}
+
+form .input-field input[type='file'] {
+  display: none;
+}
+
+form .input-field #custom-input-file {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 1rem;
+  padding: 0.875rem;
+  cursor: pointer;
+}
+
+form .input-field #custom-input-file div {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+form button {
+  border: none;
+  background-color: #883bf9;
+  padding: 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  border-radius: 0.25rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: 0px 0.25rem 0.75rem rgba(255, 255, 255, 0.15);
+  transition: background-color 200ms ease;
+}
+
+form button:hover {
+  background-color: #7230d6;
+}
+</style>
