@@ -35,8 +35,11 @@ watch(image, () => {
 
 <style scoped>
 main {
+  padding: 0 4rem;
   width: 100%;
+  height: 100vh;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 </style>
