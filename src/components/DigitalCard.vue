@@ -59,9 +59,7 @@ defineProps({
   align-items: center;
   grid-template-columns: 40% 60%;
   padding: 2.5rem;
-  border-radius: 0.875rem;
   min-width: 46.75rem;
-  background-color: #e6e5e5;
   color: #000;
 }
 
@@ -87,6 +85,20 @@ defineProps({
   border-bottom-left-radius: 0.875rem;
 }
 
+#digital-card #logo::before {
+  content: '';
+  width: 72%;
+  height: 100%;
+  position: absolute;
+  display: block;
+  top: 0;
+  right: 0;
+  background-color: #e6e5e5;
+  border-top-right-radius: 0.875rem;
+  border-bottom-right-radius: 0.875rem;
+  z-index: -1;
+}
+
 #digital-card #info {
   text-align: left;
 }
@@ -94,7 +106,6 @@ defineProps({
 #digital-card #info h2,
 h3 {
   font-family: 'Kode Mono', monospace;
-  font-weight: 700;
   margin: 0;
 }
 

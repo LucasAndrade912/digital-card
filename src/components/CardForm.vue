@@ -1,4 +1,6 @@
 <script setup>
+import domtoimage from 'dom-to-image'
+
 defineProps({
   imageName: String,
   title: {
@@ -31,10 +33,25 @@ defineEmits([
   'update:address',
   'update:email'
 ])
+
+async function downloadCard(event) {
+  event.preventDefault()
+
+  const digitaCardRef = document.querySelector('#digital-card')
+  const dataURL = await domtoimage.toJpeg(digitaCardRef, {
+    bgcolor: 'transparent',
+    style: { fontFamily: 'Poppins, sans-serif' }
+  })
+  const link = document.createElement('a')
+
+  link.download = 'digital-card.jpg'
+  link.href = dataURL
+  link.click()
+}
 </script>
 
 <template>
-  <form>
+  <form @submit="downloadCard($event)">
     <div class="input-field">
       <label for="logo">Imagem:</label>
       <label id="custom-input-file">
